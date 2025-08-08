@@ -1,0 +1,96 @@
+{
+	"asset":{
+		"generator":"Khronos glTF Blender I/O v3.6.27",
+		"version":"2.0"
+	},
+	"scene":0,
+	"scenes":[
+		{
+			"extras":{
+				"sun_pos_properties":{
+					"show_surface":0,
+					"show_analemmas":0,
+					"show_north":0,
+					"latitude":0.0,
+					"day_of_year":220,
+					"sun_object":{},
+					"object_collection":{}
+				},
+				"skinify":{
+					"connect_mesh":0,
+					"connect_parents":0,
+					"generate_all":0,
+					"thickness":0.800000011920929,
+					"finger_thickness":0.25,
+					"apply_mod":1,
+					"parent_armature":1,
+					"sub_level":1
+				},
+				"matlayer_layer_stack":{
+					"selected_layer_index":0
+				},
+				"matlayer_export_templates":[
+					{
+						"name":"PBR Metallic Roughness"
+					},
+					{
+						"name":"PBR Specular Glossiness"
+					},
+					{
+						"name":"Unity URP Metallic"
+					},
+					{
+						"name":"Unity URP Specular"
+					},
+					{
+						"name":"Unreal Engine 4 (Channel Packed)"
+					},
+					{
+						"name":"Cry Engine"
+					},
+					{
+						"name":"Painted Model (Diffuse)"
+					},
+					{
+						"name":"Unlit Painted Model (Diffuse)"
+					},
+					{
+						"name":"Mesh Maps"
+					}
+				],
+				"ypui":{
+					"expand_channels":0,
+					"expand_mask_channels":0,
+					"show_bake_targets":0,
+					"show_channels":1,
+					"show_layers":1,
+					"show_materials":0,
+					"show_object":0,
+					"show_stats":0,
+					"show_support":0,
+					"tree_name":""
+				},
+				"global_store":{},
+				"recast_navmesh":{},
+				"wiggle":{
+					"is_rendering":0
+				},
+				"jiggle_tree":{},
+				"texToolsSettings":{},
+				"matlayer_mask_stack":{},
+				"b_settings":1,
+				"s_aframe_version":"1.7.1",
+				"b_renderer":1,
+				"b_aa":1,
+				"b_colorManagement":1,
+				"b_player":0,
+				"b_interactive":1,
+				"b_export":1,
+				"export_path":"D:\\xampp\\htdocs\\A-Frame\\Proyects_JM\\Realidad_Aumentada\\SanAntonio_ElBosco_RA\\",
+				"s_project_name":"SanAntonio_orando_RA",
+				"s_output":"exporting..."
+			},
+			"name":"Scene"
+		}
+	]
+}
