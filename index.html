@@ -60,14 +60,18 @@
       }
 
       #ui {
-        position: absolute;
-		width: 100vw;
-        height: 100vh;  
-        bottom: 5%; 
-        right: 15%;        
-        z-index: 999;
+        border: 0px solid pink; 
+		position: fixed; 
+		top: 0px;  
+		width:99%; 
+		height:99%; 
+		z-index: 1; 
+		pointer-events: none;
       }
       button {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;  
         border-radius: 5px; 
         border: none;
         margin: 4px;
@@ -215,6 +219,7 @@
 </html>
 <!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->
 <!-- MIT License: https://github.com/silverslade/aframe_blender_exporter/blob/master/LICENSE -->
+
 
 
 
