@@ -81,16 +81,18 @@
         color: white;
       }
 
-	  #myEnterARButton {
-		position: fixed;
-        bottom: 10%;
-        right: 5%;        
-      }	 
+	 
     </style>
     </head>
-    <body onload="init();">
+    <body onload="init();"
+		<!-- UI Buttons -->
+                <div id="ui">
+                <button onmouseover="switchScene('scene1')">Retablo</button>
+                <button onmouseover="switchScene('scene2')">Pintura</button>
+                </div>>
+		
         <a-scene id="scene1"  shadow="type: basic; autoUpdate: false;" renderer="antialias: true; colorManagement: true; physicallyCorrectLights: false;"
-        xr-mode-ui="XRMode: ar; enterARButton: #myEnterARButton;">
+        xr-mode-ui="XRMode: ar">
             <!-- Assets -->
             <a-assets>
 				<video id="video_0" loop="true" autoplay="true" src="./media/vidretabl.mp4"></video>
@@ -107,7 +109,7 @@
             <!-- Entities -->
             
 			<a-video id="v_0" src="#video_0" width="0.6" height="1" scale="2.0 2.0 2.0" position="0 1.7 -1.65" rotation="0 0.0 0" visible="true" shadow="cast: false" play-on-click></a-video>
-			<a id="myEnterARButton" href="#"></a>
+			
 
             <!-- Camera -->
             <a-entity id="player" 
@@ -208,15 +210,12 @@
         });
       }
     </script>
-     <!-- UI Buttons -->
-                <div id="ui">
-                <button onmouseover="switchScene('scene1')">Retablo</button>
-                <button onmouseover="switchScene('scene2')">Pintura</button>
-                </div>
+     
     </body>
 </html>
 <!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->
 <!-- MIT License: https://github.com/silverslade/aframe_blender_exporter/blob/master/LICENSE -->
+
 
 
 
