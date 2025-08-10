@@ -87,8 +87,8 @@
 		<!-- UI Buttons -->
 		       <div id="interface" class="mainUI">
                	 <div id="ui" class="regionUI">
-               		 <button onclick="showObj('v_0')">Retablo</button>
-               		 <button onclick="showObj('v_1')">Pintura</button>
+               		 <button onclick="showObj('v0')">Retablo</button>
+               		 <button onclick="showObj('v1')">Pintura</button>
                	 </div>
 		        </div>
         <a-scene id="scene1"  shadow="type: basic; autoUpdate: false;" renderer="antialias: true; colorManagement: true; physicallyCorrectLights: false;"
@@ -111,8 +111,8 @@
 
             <!-- Entities -->
             
-			<a-video id="v_0" src="#video_0" width="0.6" height="1" scale="2.0 2.0 2.0" position="0 1.7 -1.65" rotation="0 0.0 0" visible="true" shadow="cast: false" play-on-click></a-video>
-			<a-video id="v_1" src="#video_1" width="1.96" height="1" scale="2.0 2.0 2.0" position="0 1.5 -2.9" rotation="0 0.0 0" visible="false" shadow="cast: false" play-on-click></a-video>
+			<a-video id="v0" src="#video_0" width="0.6" height="1" scale="2.0 2.0 2.0" position="0 1.7 -1.65" rotation="0 0.0 0" visible="true" shadow="cast: false" play-on-click></a-video>
+			<a-video id="v1" src="#video_1" width="1.96" height="1" scale="2.0 2.0 2.0" position="0 1.5 -2.9" rotation="0 0.0 0" visible="false" shadow="cast: false" play-on-click></a-video>
 
             <!-- Camera -->
             <a-entity id="player" 
@@ -144,13 +144,13 @@
              <script>
       	  		 
 	  function showObj(objId) {
-        const v_0 = document.getElementById('v_0');
-        const v_1 = document.getElementById('v_1');
+        const v0 = document.getElementById('v0');
+        const v1 = document.getElementById('v1');
 
-        if (objId === 'v_0') {
+        if (objId === 'v0') {
           v_0.setAttribute('visible', true);
           v_1.setAttribute('visible', false);
-        } else if (objId === 'v_1') {
+        } else if (objId === 'v1') {
           v_0.setAttribute('visible', false);
           v_1.setAttribute('visible', true);
         }
@@ -162,6 +162,7 @@
 </html>
 <!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->
 <!-- MIT License: https://github.com/silverslade/aframe_blender_exporter/blob/master/LICENSE -->
+
 
 
 
