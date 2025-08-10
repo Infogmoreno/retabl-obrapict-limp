@@ -52,8 +52,8 @@
         position: fixed;
         top: 0; 
 		left: 0;
-        width: 98vw;
-        height: 98vh;
+        width: 95vw;
+        height: 95vh;
       }
 
       .hidden {
@@ -144,7 +144,9 @@
                    shadow="type: basic; autoUpdate: false;" 
                    renderer="antialias: true; colorManagement: true; physicallyCorrectLights: false;" 
                    class="hidden"
-                   xr-mode-ui="XRMode: ar">
+                   webxr="requiredFeatures: hit-test,local-floor;
+                   optionalFeatures: dom-overlay,unbounded;
+                   overlayElement: #interface;">
 
                    
             <!-- Assets -->
@@ -217,6 +219,7 @@
 </html>
 <!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->
 <!-- MIT License: https://github.com/silverslade/aframe_blender_exporter/blob/master/LICENSE -->
+
 
 
 
