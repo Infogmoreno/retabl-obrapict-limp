@@ -201,15 +201,21 @@
         const scenes = document.querySelectorAll('a-scene');
         const vid0 = document.querySelector('#video_0');
         const vid1 = document.querySelector('#video_1');
+		const vid_0 = document.querySelector('#v_0');
+		const vid_1 = document.querySelector('#v_1');  
         scenes.forEach(scene => {
           if (scene.id === sceneIdToShow) {
             scene.classList.remove('hidden');
             scene.play();  // Resume rendering
             vid0.currentTime = 0;
             vid1.currentTime = 0;
+			vid_0.setAttribute('visible', true);
+			vid_1.setAttribute('visible', false);  
           } else {
             scene.pause(); // Stop rendering
             scene.classList.add('hidden');
+			vid_0.setAttribute('visible', false);
+			vid_1.setAttribute('visible', true);   
           }
         });
       }
@@ -219,6 +225,7 @@
 </html>
 <!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->
 <!-- MIT License: https://github.com/silverslade/aframe_blender_exporter/blob/master/LICENSE -->
+
 
 
 
