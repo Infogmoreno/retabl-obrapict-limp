@@ -87,8 +87,8 @@
 		<!-- UI Buttons -->
 		       <div id="interface" class="mainUI">
                	 <div id="ui" class="regionUI">
-               		 <button onclick="switchScene('scene1')">Retablo</button>
-               		 <button onclick="switchScene('scene2')">Pintura</button>
+               		 <button onclick="switchScene('scene1')" onclick="retablo()">Retablo</button>
+               		 <button onclick="switchScene('scene2')" onclick="pintura()">Pintura</button>
                	 </div>
 		        </div>
         <a-scene id="scene1"  shadow="type: basic; autoUpdate: false;" renderer="antialias: true; colorManagement: true; physicallyCorrectLights: false;"
@@ -201,30 +201,37 @@
         const scenes = document.querySelectorAll('a-scene');
         const vid0 = document.querySelector('#video_0');
         const vid1 = document.querySelector('#video_1');
-		const vid_0 = document.querySelector('#v_0');
-		const vid_1 = document.querySelector('#v_1');  
+		 
         scenes.forEach(scene => {
           if (scene.id === sceneIdToShow) {
             scene.classList.remove('hidden');
             scene.play();  // Resume rendering
             vid0.currentTime = 0;
-            vid1.currentTime = 0;
-			vid_0.setAttribute('visible', true);
-			vid_1.setAttribute('visible', false);  
+            vid1.currentTime = 0;			  
           } else {
             scene.pause(); // Stop rendering
-            scene.classList.add('hidden');
-			vid_0.setAttribute('visible', false);
-			vid_1.setAttribute('visible', true);   
+            scene.classList.add('hidden');			 
           }
-        });
+        });		 
       }
+	  const vid_0 = document.querySelector('#v_0');
+	  const vid_1 = document.querySelector('#v_1');			 
+	  
+	  function retablo() {		 
+		  vid_0.setAttribute('visible', true);
+		  vid_1.setAttribute('visible', false);		 
+	  };
+       function pintura() {		 
+		  vid_0.setAttribute('visible', false);
+		  vid_1.setAttribute('visible', true);		 
+	  }						 
     </script>
      
     </body>
 </html>
 <!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->
 <!-- MIT License: https://github.com/silverslade/aframe_blender_exporter/blob/master/LICENSE -->
+
 
 
 
