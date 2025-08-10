@@ -87,8 +87,8 @@
 		<!-- UI Buttons -->
 		       <div id="interface" class="mainUI">
                	 <div id="ui" class="regionUI">
-               		 <button onclick="showScene('v_0')">Retablo</button>
-               		 <button onclick="showScene('v_1')">Pintura</button>
+               		 <button onclick="showObj('v_0')">Retablo</button>
+               		 <button onclick="showObj('v_1')">Pintura</button>
                	 </div>
 		        </div>
         <a-scene id="scene1"  shadow="type: basic; autoUpdate: false;" renderer="antialias: true; colorManagement: true; physicallyCorrectLights: false;"
@@ -143,7 +143,7 @@
 
              <script>
       	  		 
-	  function showScene(objId) {
+	  function showObj(objId) {
         const v_0 = document.getElementById('v_0');
         const v_1 = document.getElementById('v_1');
 
@@ -162,6 +162,7 @@
 </html>
 <!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->
 <!-- MIT License: https://github.com/silverslade/aframe_blender_exporter/blob/master/LICENSE -->
+
 
 
 
