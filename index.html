@@ -87,8 +87,8 @@
 		<!-- UI Buttons -->
 		       <div id="interface" class="mainUI">
                	 <div id="ui" class="regionUI">
-               		 <button onclick="showObject('v0')">Retablo</button>
-               		 <button onclick="showObject('v1')">Pintura</button>
+               		 <button id="btn_retablo" onclick="showObject('v0')">Retablo</button>
+               		 <button id="btn_pintura" onclick="showObject('v1')">Pintura</button>
                	 </div>
 		        </div>
         <a-scene id="scene1"  shadow="type: basic; autoUpdate: false;" renderer="antialias: true; colorManagement: true; physicallyCorrectLights: false;"
@@ -143,18 +143,19 @@
 
              <script>
       	  		 
-	  function showObject(objId) {
+	    const btn_retablo = document.getElementById('btn_retablo');
+		const btn_pintura = document.getElementById('btn_pintura');		 
         const v0 = document.getElementById('v0');
         const v1 = document.getElementById('v1');
 
-        if (objId === 'v0') {
-          v0.setAttribute('visible', true);
-          v1.setAttribute('visible', false);
-        } else if (objId === 'v1') {
-          v0.setAttribute('visible', false);
-          v1.setAttribute('visible', true);
-        }
-      }
+       btn_retablo.addEventListener(click, function () {
+		 v0.setAttribute('visible', true);
+		 v1.setAttribute('visible', false);
+	   };
+		btn_pintura.addEventListener(click, function () {
+		 v0.setAttribute('visible', false);
+		 v1.setAttribute('visible', true);
+	   };		 
 		 
     </script>
      
@@ -162,6 +163,7 @@
 </html>
 <!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->
 <!-- MIT License: https://github.com/silverslade/aframe_blender_exporter/blob/master/LICENSE -->
+
 
 
 
