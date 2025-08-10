@@ -87,8 +87,8 @@
 		<!-- UI Buttons -->
 		       <div id="interface" class="mainUI">
                	 <div id="ui" class="regionUI">
-               		 <button onclick="switchScene('scene1')" onclick="retablo()">Retablo</button>
-               		 <button onclick="switchScene('scene2')" onclick="pintura()">Pintura</button>
+               		 <button onclick="switchScene('scene1')" onclick="showScene1('scene1')">Retablo</button>
+               		 <button onclick="switchScene('scene2')" onclick="showScene2('scene2')">Pintura</button>
                	 </div>
 		        </div>
         <a-scene id="scene1"  shadow="type: basic; autoUpdate: false;" renderer="antialias: true; colorManagement: true; physicallyCorrectLights: false;"
@@ -215,25 +215,26 @@
         });		 
       }
 	  		 
-	  
-	  function retablo() {	
-		  const vid_0 = document.querySelector('#v_0');
-	      const vid_1 = document.querySelector('#v_1');	
-		  vid_0.setAttribute('visible', true);
-		  vid_1.setAttribute('visible', false);		 
-	  };
-       function pintura() {	
-	      const vid_0 = document.querySelector('#v_0');
-	      const vid_1 = document.querySelector('#v_1');	
-		  vid_0.setAttribute('visible', false);
-		  vid_1.setAttribute('visible', true);		 
-	  }						 
+	  function showScene(objId) {
+        const v_0 = document.getElementById('v_0');
+        const v_1 = document.getElementById('v_1');
+
+        if (objId === 'v_0') {
+          v_0.setAttribute('visible', true);
+          v_1.setAttribute('visible', false);
+        } else if (objId === 'v_1') {
+          v_0.setAttribute('visible', false);
+          v_1.setAttribute('visible', true);
+        }
+      }
+		 
     </script>
      
     </body>
 </html>
 <!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->
 <!-- MIT License: https://github.com/silverslade/aframe_blender_exporter/blob/master/LICENSE -->
+
 
 
 
