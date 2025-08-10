@@ -148,13 +148,13 @@
         const v1 = document.querySelector("#v1");
 
        btn_retablo.addEventListener("click", function() {
-		 v0.setAttribute("visible", true);
-		 v1.setAttribute("visible", false);
+		 v0.object3D.visible = true;
+		 v1.object3D.visible = false;
 		   
 	   };
 		btn_pintura.addEventListener("click", function() {
-		 v0.setAttribute("visible", false);
-		 v1.setAttribute("visible", true);
+		 v0.object3D.visible = false;
+		 v1.object3D.visible = true;
 	   };		 
 		 
     </script>
@@ -163,6 +163,7 @@
 </html>
 <!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->
 <!-- MIT License: https://github.com/silverslade/aframe_blender_exporter/blob/master/LICENSE -->
+
 
 
 
