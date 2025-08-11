@@ -130,35 +130,36 @@
             
         </a-scene>
 
-             <script>
-      	  		 
-	    const btn_retablo = document.querySelector('#btn_retablo');
-		const btn_pintura = document.querySelector('#btn_pintura');		 
-        const v0 = document.querySelector("#v0");
-        const v1 = document.querySelector("#v1");
-		
-
-       btn_retablo.addEventListener("click", function() {
-		 v0.object3D.visible = true;
-		 v1.object3D.visible = false;
-		 const entityEl = document.createElement(entityEl);  
-		 v1.parentNode.removeChild("v1");  
-		 entityEl.parentNode.addChild(entityEl);
-	   });
-		btn_pintura.addEventListener("click", function() {
-		 v0.object3D.visible = false;
-		 v1.object3D.visible = true;
-		 const entityEl = document.createElement(entityEl);	
-	     v0.parentNode.removeChild("v0");
-		 entityEl.parentNode.addChild(entityEl);
-	   });		 
-		 
-    </script>
-     
+    <script>
+      	document.getElementById("btn_retablo").addEventListener("click", e => {
+        var el = document.querySelector("#v1");
+        el.setAttribute("visible", false);
+        el.parentNode.removeChild("el");        
+      })
+        document.getElementById("btn_retablo").addEventListener("click", e => {
+        var el = document.querySelector("#v0");
+        var entityEl = document.createElement(entityEl);   
+        el.setAttribute("visible", true);
+        entityEl.parentNode.addChild(entityEl);        
+      })
+       
+        document.getElementById("btn_pintura").addEventListener("click", e => {
+        var el = document.querySelector("#v0");
+        el.setAttribute("visible", false);
+        el.parentNode.removeChild("el");        
+      })
+        document.getElementById("btn_pintura").addEventListener("click", e => {
+        var el = document.querySelector("#v1");
+        var entityEl = document.createElement(entityEl);
+        el.setAttribute("visible", true);
+        entityEl.parentNode.addChild(entityEl);       
+      })	
+    </script>     
     </body>
 </html>
 <!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->
 <!-- MIT License: https://github.com/silverslade/aframe_blender_exporter/blob/master/LICENSE -->
+
 
 
 
