@@ -77,19 +77,19 @@
       button:hover {
         background-color: rgb(216, 156, 156);
         color: white;
-      }
-     
-	 
+      }	 
     </style>
-    </head>
-    <body onload="init();">
-		<!-- UI Buttons -->
-		       <div id="interface" class="mainUI">
+
+		 <div id="interface" class="mainUI">
                	 <div id="ui" class="regionUI">
                		 <button id="btn_retablo">Retablo</button>
                		 <button id="btn_pintura">Pintura</button>
                	 </div>
 		        </div>
+    </head>
+    <body>
+		<!-- UI Buttons -->
+		      
         <a-scene id="scene1"  shadow="type: basic; autoUpdate: false;" renderer="antialias: true; colorManagement: true; physicallyCorrectLights: false;"
         webxr="requiredFeatures: hit-test,local-floor;
                 optionalFeatures: dom-overlay,unbounded;
@@ -98,14 +98,7 @@
             <!-- Assets -->
             <a-assets>
 				<video id="video_0" loop="true" autoplay="true" src="./media/vidretabl.mp4"></video>
-				<video id="video_1" loop="true" autoplay="true" src="./media/vidSanAntonio.mp4"></video>
-                <img id="sky"                 src="./resources/sky.jpg">
-                <img id="icon-play"           src="./resources/play.png">
-                <img id="icon-pause"          src="./resources/pause.png">
-                <img id="icon-play-skip-back" src="./resources/play-skip-back.png">
-                <img id="icon-mute"           src="./resources/mute.png">
-                <img id="icon-volume-low"     src="./resources/volume-low.png">
-                <img id="icon-volume-high"    src="./resources/volume-high.png">
+				<video id="video_1" loop="true" autoplay="true" src="./media/vidSanAntonio.mp4"></video>                
             </a-assets>
 
             <!-- Entities -->
@@ -166,6 +159,7 @@
 </html>
 <!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->
 <!-- MIT License: https://github.com/silverslade/aframe_blender_exporter/blob/master/LICENSE -->
+
 
 
 
