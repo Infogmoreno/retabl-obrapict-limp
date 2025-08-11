@@ -9,15 +9,16 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-        
+        <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
         <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
         <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
         <script src="https://unpkg.com/aframe-template-component@3.2.1/dist/aframe-template-component.min.js"></script>
         <script src="https://unpkg.com/aframe-proxy-event-component/dist/aframe-proxy-event-component.min.js"></script>
-        <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
-        
-        
+         <script src="https://unpkg.com/aframe-layout-component@5.3.0/dist/aframe-layout-component.min.js"></script>
+        <script src="https://cdn.rawgit.com/ngokevin/kframe/e48f8cdb/components/template/dist/aframe-template-component.js"></script>
+        <script src="https://raw.githack.com/thedart76/aframe-blink-teleportation/master/js/aframe-blink-teleportation-min.js"></script>
+        <script src="https://stemkoski.github.io/A-Frame-Examples/js/aframe-spritesheet-animation.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
         <script type="text/javascript" src="js/webxr.js"></script>
         <script type="text/javascript" src="js/joystick.js"></script>
@@ -48,11 +49,10 @@
 
          <style>
       a-scene {
-        position: fixed;
-        top: 0; 
-		left: 0;
-        width: 98vw;
-        height: 80vh;
+        position: absolute;
+        top: 0; left: 0;
+        width: 100vw;
+        height: 100vh;
       }
 
       .hidden {
@@ -62,7 +62,7 @@
       #ui {
         position: fixed; 
         bottom: 3%; 
-        right: 22%;        
+        right: 12%;        
         z-index: 999;
       }
       button {
@@ -72,39 +72,42 @@
         padding: 5px;
         background-color: rgb(223, 219, 219);
         color: black;
-        z-index: 999;
+
       }
       button:hover {
         background-color: rgb(216, 156, 156);
         color: white;
-      }	 
+      }
+      xr-mode-ui {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 2%;
+        right: 5%;
+        z-index: 2;       
+      }
     </style>
-
-		 <div id="interface" class="mainUI">
-               	 <div id="ui" class="regionUI">
-               		 <button id="btn_retablo">Retablo</button>
-               		 <button id="btn_pintura">Pintura</button>
-               	 </div>
-		        </div>
     </head>
-    <body>
-		<!-- UI Buttons -->
-		      
+    <body onload="init();">
         <a-scene id="scene1"  shadow="type: basic; autoUpdate: false;" renderer="antialias: true; colorManagement: true; physicallyCorrectLights: false;"
-        webxr="requiredFeatures: hit-test,local-floor;
-                optionalFeatures: dom-overlay,unbounded;
-			    
-                ">
+        xr-mode-ui="XRMode: xr;">
             <!-- Assets -->
             <a-assets>
 				<video id="video_0" loop="true" autoplay="true" src="./media/vidretabl.mp4"></video>
-				<video id="video_1" loop="true" autoplay="true" src="./media/vidSanAntonio.mp4"></video>                
+				
+                <img id="sky"                 src="./resources/sky.jpg">
+                <img id="icon-play"           src="./resources/play.png">
+                <img id="icon-pause"          src="./resources/pause.png">
+                <img id="icon-play-skip-back" src="./resources/play-skip-back.png">
+                <img id="icon-mute"           src="./resources/mute.png">
+                <img id="icon-volume-low"     src="./resources/volume-low.png">
+                <img id="icon-volume-high"    src="./resources/volume-high.png">
             </a-assets>
 
             <!-- Entities -->
             
-			<a-video id="v0" src="#video_0" width="0.6" height="1" scale="2.0 2.0 2.0" position="0 1.7 -1.65" rotation="0 0.0 0" visible="true" shadow="cast: false" play-on-click></a-video>
-			<a-video id="v1" src="#video_1" width="1.96" height="1" scale="2.0 2.0 2.0" position="0 1.5 -2.9" rotation="0 0.0 0" visible="false" shadow="cast: false" play-on-click></a-video>
+			<a-video id="v_0" src="#video_0" width="0.6" height="1" scale="2.0 2.0 2.0" position="0 1.7 -1" rotation="0 0.0 0" visible="true" shadow="cast: false" play-on-click></a-video>
+			
 
             <!-- Camera -->
             <a-entity id="player" 
@@ -117,9 +120,12 @@
                         <a-entity id="cursor" cursor="fuse: false;" animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 50; from: 	0.1 0.1 0.1; to: 1 1 1"
                             position="0 0 -0.1"
                             geometry="primitive: circle; radius: 0.0005;"
-                            material="color: #CCC; shader: flat; opacity: 0.3">
+                            material="color: #CCC; shader: flat; opacity: 0.3"
+                            >
                         </a-entity>
-                </a-entity>                  
+                </a-entity>
+                    <a-entity id="leftHand" oculus-touch-controls="hand: left" vive-controls="hand: left"></a-entity>
+					<a-entity id="rightHand" laser-controls oculus-touch-controls="hand: right" vive-controls="hand: right" ></a-entity>
             </a-entity>
 
             <!-- Lights -->
@@ -130,36 +136,87 @@
             
         </a-scene>
 
-    <script>
-      	document.getElementById("btn_retablo").addEventListener("click", e => {
-        var el = document.querySelector("#v1");
-        el.setAttribute("visible", false);
-        el.parentNode.removeChild("el");        
-      })
-        document.getElementById("btn_retablo").addEventListener("click", e => {
-        var el = document.querySelector("#v0");
-        var entityEl = document.createElement(entityEl);   
-        el.setAttribute("visible", true);
-        entityEl.parentNode.addChild(entityEl);        
-      })
-       
-        document.getElementById("btn_pintura").addEventListener("click", e => {
-        var el = document.querySelector("#v0");
-        el.setAttribute("visible", false);
-        el.parentNode.removeChild("el");        
-      })
-        document.getElementById("btn_pintura").addEventListener("click", e => {
-        var el = document.querySelector("#v1");
-        var entityEl = document.createElement(entityEl);
-        el.setAttribute("visible", true);
-        entityEl.parentNode.addChild(entityEl);       
-      })	
-    </script>     
+         <a-scene  id="scene2" 
+                   shadow="type: basic; autoUpdate: false;" 
+                   renderer="antialias: true; colorManagement: true; physicallyCorrectLights: false;" 
+                   class="hidden"
+                   xr-mode-ui="XRMode: xr;">
+
+                   
+            <!-- Assets -->
+            <a-assets>
+				
+				<video id="video_1" loop="true" autoplay="true" src="./media/vidSanAntonio.mp4"></video>
+                <img id="sky"                 src="./resources/sky.jpg">
+                <img id="icon-play"           src="./resources/play.png">
+                <img id="icon-pause"          src="./resources/pause.png">
+                <img id="icon-play-skip-back" src="./resources/play-skip-back.png">
+                <img id="icon-mute"           src="./resources/mute.png">
+                <img id="icon-volume-low"     src="./resources/volume-low.png">
+                <img id="icon-volume-high"    src="./resources/volume-high.png">
+            </a-assets>
+
+            <!-- Entities -->
+            
+			
+			<a-video id="v_1" src="#video_1" width="1.96" height="1" scale="2.0 2.0 2.0" position="0 1.7 -2.7" rotation="0 0.0 0" visible="true" shadow="cast: false" play-on-click></a-video>
+
+            <!-- Camera -->
+            <a-entity id="player" 
+                position="0 -0.2 0"                
+                wasd-controls="acceleration: 5">
+                <a-entity id="camera" 
+                    camera="near: 0.001" 
+                    position="0 1.7000000476837158 0" 
+                    look-controls="pointerLockEnabled: false">
+                        <a-entity id="cursor" cursor="fuse: false;" animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 50; from: 	0.1 0.1 0.1; to: 1 1 1"
+                            position="0 0 -0.1"
+                            geometry="primitive: circle; radius: 0.0005;"
+                            material="color: #CCC; shader: flat; opacity: 0.3"
+                            >
+                        </a-entity>
+                </a-entity>
+                    <a-entity id="leftHand" oculus-touch-controls="hand: left" vive-controls="hand: left"></a-entity>
+					<a-entity id="rightHand" laser-controls oculus-touch-controls="hand: right" vive-controls="hand: right" ></a-entity>
+            </a-entity>
+
+            <!-- Lights -->
+            
+			<a-entity position="4.076245307922363 5.903861999511719 -1.0054539442062378" light="castShadow:false; color:#ffffff; distance:40.0; type:point; intensity:1.0; shadowBias: -0.001; shadowCameraFar: 501.02; shadowCameraBottom: 12; shadowCameraFov: 101.79; shadowCameraNear: 0; shadowCameraTop: -5; shadowCameraRight: 10; shadowCameraLeft: -10; shadowRadius: 2;"></a-entity>
+
+            <!-- Sky -->
+            
+            
+           
+        </a-scene>
+
+             <script>
+      function switchScene(sceneIdToShow) {
+        const scenes = document.querySelectorAll('a-scene');
+        const vid0 = document.querySelector('#video_0');
+        const vid1 = document.querySelector('#video_1');
+        scenes.forEach(scene => {
+          if (scene.id === sceneIdToShow) {
+            scene.classList.remove('hidden');
+            scene.play();  // Resume rendering
+            vid0.currentTime = 0;
+            vid1.currentTime = 0;
+          } else {
+            scene.pause(); // Stop rendering
+            scene.classList.add('hidden');
+          }
+        });
+      }
+    </script>
+     <!-- UI Buttons -->
+                <div id="ui">
+                <button onmouseover="switchScene('scene1')">Retablo</button>
+                <button onmouseover="switchScene('scene2')">Pintura</button>
+                </div>
     </body>
 </html>
 <!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->
 <!-- MIT License: https://github.com/silverslade/aframe_blender_exporter/blob/master/LICENSE -->
-
 
 
 
