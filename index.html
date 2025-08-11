@@ -117,12 +117,9 @@
                         <a-entity id="cursor" cursor="fuse: false;" animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 50; from: 	0.1 0.1 0.1; to: 1 1 1"
                             position="0 0 -0.1"
                             geometry="primitive: circle; radius: 0.0005;"
-                            material="color: #CCC; shader: flat; opacity: 0.3"
-                            >
+                            material="color: #CCC; shader: flat; opacity: 0.3">
                         </a-entity>
-                </a-entity>
-                    <a-entity id="leftHand" oculus-touch-controls="hand: left" vive-controls="hand: left"></a-entity>
-					<a-entity id="rightHand" laser-controls oculus-touch-controls="hand: right" vive-controls="hand: right" ></a-entity>
+                </a-entity>                  
             </a-entity>
 
             <!-- Lights -->
@@ -139,18 +136,21 @@
 		const btn_pintura = document.querySelector('#btn_pintura');		 
         const v0 = document.querySelector("#v0");
         const v1 = document.querySelector("#v1");
+		
 
        btn_retablo.addEventListener("click", function() {
 		 v0.object3D.visible = true;
 		 v1.object3D.visible = false;
+		 const entityEl = document.createElement(entityEl);  
 		 v1.parentNode.removeChild("v1");  
-		 v0.parentNode.addChild(v0);  
+		 entityEl.parentNode.addChild(entityEl);
 	   });
 		btn_pintura.addEventListener("click", function() {
 		 v0.object3D.visible = false;
 		 v1.object3D.visible = true;
+		 const entityEl = document.createElement(entityEl);	
 	     v0.parentNode.removeChild("v0");
-		 v1.parentNode.addChild(v1);	
+		 entityEl.parentNode.addChild(entityEl);
 	   });		 
 		 
     </script>
@@ -159,6 +159,7 @@
 </html>
 <!-- Generated automatically by AFRAME Exporter for Blender - https://silverslade.itch.io/a-frame-blender-exporter -->
 <!-- MIT License: https://github.com/silverslade/aframe_blender_exporter/blob/master/LICENSE -->
+
 
 
 
